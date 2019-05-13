@@ -9,6 +9,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity implements ViewPainterFragment.onPainterSelected, ViewPaintingFragment.onPaintingSelected{
 
 
+    // ciao
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
