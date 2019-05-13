@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
 
 
     String s = "ciao";
+    String s1 = "ciao";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
