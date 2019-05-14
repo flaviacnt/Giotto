@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
+        transaction.replace(R.id.FragmentContainer1, fragment);
         transaction.commit();
 
     }
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
         //animazioni fragment
-        transaction.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_out_right);
+        //transaction.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_out_right);
 
-        transaction.replace(R.id.fragment_container, vpf);
+        transaction.replace(R.id.FragmentContainer1, vpf);
         transaction.addToBackStack(null);
         transaction.commit();
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
-        transaction.replace(R.id.fragment_container, pdf);
+        transaction.replace(R.id.FragmentContainer1, pdf);
         transaction.addToBackStack(null);
         transaction.commit();
 

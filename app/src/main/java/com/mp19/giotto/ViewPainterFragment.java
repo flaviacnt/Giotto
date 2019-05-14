@@ -123,14 +123,4 @@ public class ViewPainterFragment extends Fragment {
         return names;
     }
 
-    private Pittore setupSelectedPainter(String selected) throws IOException {
-        final Pittore pittore;
-
-        DatabaseManager dbm = new DatabaseManager(getActivity());
-        pittore = dbm.getFilteredPainter(selected);
-
-        return pittore;
-
-
-    }
 }
