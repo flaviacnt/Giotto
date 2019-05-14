@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
-        //animazioni
+        //animazioni fragment
         transaction.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_out_right);
 
         transaction.replace(R.id.fragment_container, vpf);
