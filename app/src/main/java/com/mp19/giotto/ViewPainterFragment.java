@@ -66,7 +66,9 @@ public class ViewPainterFragment extends Fragment {
             //autocomplete
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, list);
             actv = view.findViewById(R.id.autocomplete);
+
             actv.setThreshold(1);
+
             actv.setAdapter(arrayAdapter);
             //listener per lavorare con il selected item
             actv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -78,16 +80,6 @@ public class ViewPainterFragment extends Fragment {
                     Toast.makeText(mContext,
                             selected,
                             Toast.LENGTH_SHORT).show();
-                    //non funziona
-                    try{
-                        DatabaseManager dbm = new DatabaseManager(getActivity());
-                        p = dbm.getFilteredPainter(selected);
-                        painterSelected.selectedPainter(p);
-
-                    }
-                    catch (IOException e){
-                        e.printStackTrace();
-                    }
 
 
                      }

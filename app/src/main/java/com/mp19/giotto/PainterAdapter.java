@@ -14,21 +14,20 @@ import java.util.List;
 public class PainterAdapter extends ArrayAdapter<Pittore> {
 
     private LayoutInflater inflater;
+
     private List<Pittore> pittori;
-    private ArrayList<Pittore> arrayPittori;
     private int layoutResource;
     private Context aContext;
 
 
     public PainterAdapter(@NonNull Context context, int resource, @NonNull List<Pittore> objects) {
         super(context, resource, objects);
+
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         layoutResource = resource;
         aContext = context;
         this.pittori = objects;
-        //arrayPittori = new ArrayList<>();
-        this.arrayPittori.addAll(pittori);
-
     }
 
     private static class ViewHolder{
@@ -50,6 +49,7 @@ public class PainterAdapter extends ArrayAdapter<Pittore> {
         }
 
         holder.nome.setText(getItem(position).getNome());
+
 
         return convertView;
     }

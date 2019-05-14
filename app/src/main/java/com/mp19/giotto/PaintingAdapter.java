@@ -37,8 +37,8 @@ public class PaintingAdapter extends ArrayAdapter<Dipinto> {
         layoutResource = resource;
         aContext = context;
         this.dipinti = objects;
-        arrayDipinti = new ArrayList<>();
-        this.arrayDipinti.addAll(dipinti);
+        //arrayDipinti = new ArrayList<>();
+        //this.arrayDipinti.addAll(dipinti);
 
 
     }
