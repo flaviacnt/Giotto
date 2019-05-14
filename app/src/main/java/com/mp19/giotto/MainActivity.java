@@ -1,6 +1,7 @@
 package com.mp19.giotto;
 
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -21,9 +22,10 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
     private void init(){
         ViewPainterFragment fragment = new ViewPainterFragment();
 
-        FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.fragment_container, fragment);
-        trans.commit();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction =  manager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
 
     }
 
@@ -34,7 +36,11 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
         args.putParcelable("Painter", painter);
         vpf.setArguments(args);
 
-        FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction =  manager.beginTransaction();
+        //animazioni
+        transaction.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_out_right);
+
         transaction.replace(R.id.fragment_container, vpf);
         transaction.addToBackStack(null);
         transaction.commit();
@@ -47,7 +53,8 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
         args.putParcelable("Painting", painting);
         pdf.setArguments(args);
 
-        FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction =  manager.beginTransaction();
         transaction.replace(R.id.fragment_container, pdf);
         transaction.addToBackStack(null);
         transaction.commit();
