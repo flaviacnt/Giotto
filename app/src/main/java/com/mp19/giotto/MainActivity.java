@@ -1,11 +1,15 @@
 package com.mp19.giotto;
 
+import android.app.ListActivity;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements ViewPainterFragment.onPainterSelected, ViewPaintingFragment.onPaintingSelected{
 
@@ -24,7 +28,15 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
-        transaction.replace(R.id.FragmentContainer1, fragment);
+
+        if (isTablet(this)) {
+            transaction.replace(R.id.large_fragment_container1, fragment);
+
+
+        }else{
+            transaction.replace(R.id.fragment_container, fragment);
+        }
+        //transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
 
     }
@@ -36,12 +48,19 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
         args.putParcelable("Painter", painter);
         vpf.setArguments(args);
 
+
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
         //animazioni fragment
         //transaction.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_out_right);
 
-        transaction.replace(R.id.FragmentContainer1, vpf);
+        if(isTablet(this)){
+            transaction.replace(R.id.large_fragment_container1, vpf);
+        }else{
+            transaction.replace(R.id.fragment_container, vpf);
+        }
+
+
         transaction.addToBackStack(null);
         transaction.commit();
 
@@ -55,10 +74,21 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction =  manager.beginTransaction();
-        transaction.replace(R.id.FragmentContainer1, pdf);
+
+        if(isTablet(this)){
+            findViewById(R.id.large_fragment_container2).setVisibility(View.VISIBLE);
+            transaction.replace(R.id.large_fragment_container2, pdf);
+        }else{
+            transaction.replace(R.id.fragment_container, pdf);
+        }
+
         transaction.addToBackStack(null);
         transaction.commit();
 
+    }
+
+    public static boolean isTablet(Context context) {
+        return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
 }

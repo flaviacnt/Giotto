@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-
-
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:imeOptions="actionSearch"
-        android:inputType="textAutoComplete|textAutoCorrect"
-        android:layout_margin="5sp"
-    />
+        android:orientation="horizontal">
 
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:queryHint="Search Painter..."/>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

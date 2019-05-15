@@ -91,13 +91,7 @@ public class Pittore implements Parcelable {
 
     @Override
     public String toString() {
-        return "Pittore{" +
-                "nome='" + nome + '\'' +
-                ", vita='" + vita + '\'' +
-                ", correnti='" + correnti + '\'' +
-                ", nazionalità='" + nazionalità + '\'' +
-                ", bio='" + bio + '\'' +
-                '}';
+        return nome;
     }
 
     @Override

@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PainterAdapter extends ArrayAdapter<Pittore> {
 
     private LayoutInflater inflater;
 
     private List<Pittore> pittori;
+    private ArrayList<Pittore> array;
     private int layoutResource;
     private Context aContext;
 

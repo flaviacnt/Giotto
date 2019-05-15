@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,8 +65,8 @@ public class ViewPainterFragment extends Fragment {
 
 
             //autocomplete
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, list);
-            actv = view.findViewById(R.id.autocomplete);
+            //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, list);
+            /*actv = view.findViewById(R.id.autocomplete);
 
             actv.setThreshold(1);
 
@@ -74,7 +75,7 @@ public class ViewPainterFragment extends Fragment {
             actv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<Object> parent, View view, int position, long id) {
                     Pittore p;
                     String selected = (String)parent.getItemAtPosition(position);
                     Toast.makeText(mContext,
@@ -83,7 +84,7 @@ public class ViewPainterFragment extends Fragment {
 
 
                      }
-            });
+            });*/
 
 
         } catch (IOException e) {

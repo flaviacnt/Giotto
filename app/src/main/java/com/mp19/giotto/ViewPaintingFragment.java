@@ -18,7 +18,7 @@ import com.mp19.giotto.R;
 import java.io.IOException;
 import java.util.List;
 
-import static com.mp19.giotto.R.id.paintersView;
+//import static com.mp19.giotto.R.id.paintersView;
 import static com.mp19.giotto.R.id.paintingsView;
 
 public class ViewPaintingFragment extends Fragment {
