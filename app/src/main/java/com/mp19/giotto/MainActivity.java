@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
             transaction.replace(R.id.large_fragment_container2, pdf);
         }else{
             transaction.replace(R.id.fragment_container, pdf);
+
         }
 
         transaction.addToBackStack(null);
