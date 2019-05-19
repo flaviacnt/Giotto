@@ -25,6 +25,12 @@ public class PainterAdapter extends ArrayAdapter<Pittore> {
     public PainterAdapter(@NonNull Context context, int resource, @NonNull List<Pittore> objects) {
         super(context, resource, objects);
 
+        /*For example, I have an instance of class call objectA. In objectA,
+        I want to inflate a view onto the parent view (happen in ArrayAdapter that inflates customized row on the its listview.)
+        In this case, context.getLayoutInflater does not work since there is no activity or windows associated with the context.
+        Only getSystemService(Context.LAYOUT_INFLATER_SERVICE) is appropriate then.
+         */
+
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         layoutResource = resource;

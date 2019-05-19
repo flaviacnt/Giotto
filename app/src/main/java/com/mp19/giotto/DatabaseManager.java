@@ -23,7 +23,7 @@ public class DatabaseManager {
         dbHelper = new DatabaseHelper(context);
 
         dbHelper.createDatabase();
-        dbHelper.openDatabase();
+        //dbHelper.openDatabase();
     }
 
     public void open() throws IOException {
@@ -45,9 +45,6 @@ public class DatabaseManager {
 
         open();
 
-        //String  like = "nome like ?";
-        //String [] filter = {str + "%"};
-        //Cursor cursor = db.query(dbHelper.TABLE_PAINTERS, new String[] { dbHelper.COL_NOME, dbHelper.COL_VITA, dbHelper.COL_CORRENTE, dbHelper.COL_NAZIONALITA, dbHelper.COL_BIO},  like, filter,  null, null, null);
         Cursor cursor = db.rawQuery("SELECT *  FROM " + dbHelper.TABLE_PAINTERS + " WHERE " + dbHelper.COL_NOME + " LIKE '%" + str + "%' ", null);
 
         cursor.moveToFirst();
@@ -71,8 +68,6 @@ public class DatabaseManager {
         List<Pittore> pittori = new ArrayList<Pittore>();
 
         open();
-
-        //dbHelper.opendatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ dbHelper.TABLE_PAINTERS +" ORDER BY " + dbHelper.COL_NOME, null);
 
 
@@ -96,7 +91,6 @@ public class DatabaseManager {
 
     public List<Dipinto> getDipinti(String artista) throws IOException {
         List<Dipinto> dipinti = new ArrayList<Dipinto>();
-        //Cursor cursor = db.query(dbHelper.TABLE_PAINTS, new String[] { dbHelper.COL_TITOLO, dbHelper.COL_MATERIALI, dbHelper.COL_DIMENSIONI, dbHelper.COL_URL },  dbHelper.COL_ARTISTA +" = " + str, null,  null, null, null);
 
         open();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ dbHelper.TABLE_PAINTINGS + " WHERE " + dbHelper.COL_ARTISTA + " = " + "'" + artista + "'", null);

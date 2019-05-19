@@ -5,17 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,7 +48,9 @@ public class ViewPainterFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_viewpittori, container, false);
 
@@ -100,7 +97,6 @@ public class ViewPainterFragment extends Fragment {
         final List<Pittore> pittori;
 
         DatabaseManager dbm = new DatabaseManager(getActivity());
-        //pittori = dbm.getFilteredPainters("go");
         pittori = dbm.getAllPainters();
 
         List<String> names = new ArrayList<>(pittori.size());
