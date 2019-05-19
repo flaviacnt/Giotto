@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity implements ViewPainterFragment.onPainterSelected, ViewPaintingFragment.onPaintingSelected{
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
         }
         //transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+
+
 
     }
 
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements ViewPainterFragme
             transaction.replace(R.id.large_fragment_container2, pdf);
         }else{
             transaction.replace(R.id.fragment_container, pdf);
+
 
         }
 
