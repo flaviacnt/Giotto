@@ -16,7 +16,7 @@ public class PainterAdapter extends ArrayAdapter<Pittore> {
 
     private LayoutInflater inflater;
 
-    private List<Pittore> pittori;
+    private List<Pittore> pittori = null;
     private ArrayList<Pittore> array;
     private int layoutResource;
     private Context aContext;
@@ -32,10 +32,11 @@ public class PainterAdapter extends ArrayAdapter<Pittore> {
          */
 
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         layoutResource = resource;
-        aContext = context;
+        this.aContext = context;
         this.pittori = objects;
+        array = new ArrayList<>();
+        this.array.addAll(pittori);
     }
 
     private static class ViewHolder{
@@ -60,6 +61,24 @@ public class PainterAdapter extends ArrayAdapter<Pittore> {
 
 
         return convertView;
+    }
+
+    //Filter class
+    public void filter(String characterText){
+        characterText = characterText.toLowerCase(Locale.getDefault());
+        pittori.clear();
+        if( characterText.length() == 0){
+            pittori.addAll(array);
+        }
+        else{
+            pittori.clear();
+            for(Pittore p: array){
+                if(p.getNome().toLowerCase(Locale.getDefault()).contains(characterText)){
+                    pittori.add(p);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 

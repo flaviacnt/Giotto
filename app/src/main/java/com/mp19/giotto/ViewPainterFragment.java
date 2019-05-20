@@ -5,22 +5,26 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ViewPainterFragment extends Fragment {
 
     private PainterAdapter adapter;
     private ListView painterList;
-    private AutoCompleteTextView actv;
+    private EditText search;
     private Context mContext;
 
     public ViewPainterFragment() {
@@ -55,38 +59,14 @@ public class ViewPainterFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_viewpittori, container, false);
 
         painterList = (ListView) view.findViewById(R.id.paintersView);
+        search = (EditText) view.findViewById(R.id.search);
 
         try {
             List<String> list = setupPaintersList();
-
-
-
-            //autocomplete
-            //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, list);
-            /*actv = view.findViewById(R.id.autocomplete);
-
-            actv.setThreshold(1);
-
-            actv.setAdapter(arrayAdapter);
-            //listener per lavorare con il selected item
-            actv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<Object> parent, View view, int position, long id) {
-                    Pittore p;
-                    String selected = (String)parent.getItemAtPosition(position);
-                    Toast.makeText(mContext,
-                            selected,
-                            Toast.LENGTH_SHORT).show();
-
-
-                     }
-            });*/
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         return view;
     }
@@ -105,6 +85,25 @@ public class ViewPainterFragment extends Fragment {
         }
 
         adapter = new PainterAdapter(getActivity(), R.layout.painter_item, pittori);
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text = search.getText().toString().toLowerCase(Locale.getDefault());
+                adapter.filter(text);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         painterList.setAdapter(adapter);
 
 
